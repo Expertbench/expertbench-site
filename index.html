@@ -1,43 +1,144 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ExpertBench Network</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f8f9fa;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #555;
-            max-width: 600px;
-            margin: auto;
-        }
-        .button {
-            display: inline-block;
-            margin: 20px;
-            padding: 15px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: #007bff;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ExpertBench — Fast, trusted expert match-making for high-impact projects.</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b1220; --bg2:#0c1a33; --card:#0e1f3a; --muted:#9fb3c8;
+      --primary:#0B3D91; --secondary:#3178C6; --accent:#00BFA6; --line: rgba(255,255,255,0.06);
+      --white:#e9f0f7; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background: radial-gradient(1200px 600px at 20% -10%, #153260 0%, transparent 60%),
+                  linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      color:var(--white); line-height:1.5;
+    }
+    .container{max-width:1060px;margin:40px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo{
+      width:40px;height:40px;border-radius:12px;
+      background:linear-gradient(180deg,var(--secondary),var(--primary));
+      display:grid;place-items:center;box-shadow:0 8px 30px rgba(30,100,200,0.35);
+    }
+    .logo svg{width:22px;height:22px;opacity:0.95}
+    .name{font-weight:800;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:28px;
+    }
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+      border:1px solid var(--line); border-radius:var(--radius); padding:28px;
+      box-shadow:0 10px 40px rgba(5,15,35,0.5);
+    }
+    h1{font-size:34px;margin:0 0 10px 0}
+    .tag{color:var(--muted);margin:0 0 16px 0}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:12px 16px;border-radius:12px;border:1px solid var(--line);
+      color:#051225;text-decoration:none;font-weight:600;cursor:pointer;
+      background:linear-gradient(90deg,var(--secondary),var(--primary));
+      box-shadow:0 8px 30px rgba(30,100,200,0.35);
+    }
+    .btn.alt{
+      background:transparent;color:var(--white);
+      border:1px solid rgba(255,255,255,0.14)
+    }
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    .feature{background:rgba(255,255,255,0.04);border:1px solid var(--line);padding:12px;border-radius:12px;color:var(--muted);font-size:14px}
+    .mini{font-size:13px;color:var(--muted)}
+    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-    <h1>ExpertBench Network</h1>
-    <p>Connecting top consultants with companies that need their expertise — starting in Energy & Subsurface, growing globally.</p>
-    
-    <a class="button" href=https://forms.gle/ByXwDREL7pXP29k57>I’m a Consultant</a>
-    <a class="button" href=https://forms.gle/rrz8HytBnTUTKdLn9>I’m a Company</a>
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="8" height="8" rx="2" fill="white" opacity="0.9"/>
+            <rect x="12" y="8" width="8" height="8" rx="2" fill="white" opacity="0.7"/>
+            <rect x="6" y="12" width="8" height="8" rx="2" fill="white" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="name">ExpertBench</div>
+      </a>
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#consultants">Consultants</a>
+        <a href="#clients">Companies</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Fast, trusted expert match-making for high-impact projects.</h1>
+        <p class="tag">Start in Energy & Subsurface. Expand into AI, IT, and Renewables — same platform, same quality.</p>
+        <div class="cta">
+          <a class="btn" href="https://forms.gle/ByXwDREL7pXP29k57" target="_blank" rel="noopener">Join as a Consultant</a>
+          <a class="btn alt" href="https://forms.gle/rrz8HytBnTUTKdLn9" target="_blank" rel="noopener">Hire an Expert</a>
+        </div>
+        <div class="features">
+          <div class="feature"><strong>Curated shortlists in 24–72h</strong><br>Actionable profiles, not noise.</div>
+          <div class="feature"><strong>Senior, vetted talent</strong><br>References & portfolios reviewed.</div>
+          <div class="feature"><strong>Fixed-scope packs</strong><br>Clear deliverables & pricing bands.</div>
+          <div class="feature"><strong>Zero upfront</strong><br>Start free; pay per successful match later.</div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div style="font-weight:700;margin-bottom:6px">Sample Expert</div>
+        <div class="mini">Jane B — Reservoir Engineer · Petrel/Eclipse · CCS site screening</div>
+        <div class="mini" style="margin-top:10px"><strong>Example pack:</strong> 3-day CCS site screen with risks & next steps.</div>
+        <div class="mini" style="margin-top:12px">Questions? Email: <a style="color:#8ecbff" href="mailto:expertbench.team@gmail.com">expertbench.team@gmail.com</a></div>
+      </aside>
+    </section>
+
+    <section id="how" style="margin-top:22px">
+      <div class="card">
+        <h2 style="margin:0 0 10px 0">How it works</h2>
+        <ol class="mini">
+          <li>Consultants join with a 2–5 minute form.</li>
+          <li>Companies submit a 2-minute brief.</li>
+          <li>We curate 3–5 top matches within 24–72 hours.</li>
+          <li>Book intros, hire fast. Optional managed delivery.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="consultants" style="margin-top:14px">
+      <div class="card">
+        <h2 style="margin:0 0 10px 0">For consultants</h2>
+        <ul class="mini">
+          <li>Be discovered by serious teams.</li>
+          <li>Showcase deliverables & availability.</li>
+          <li>Keep admin low — we handle intros & payments.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="clients" style="margin-top:14px">
+      <div class="card">
+        <h2 style="margin:0 0 10px 0">For companies</h2>
+        <ul class="mini">
+          <li>Trusted matches that reduce procurement delay.</li>
+          <li>Fixed-scope “packs” or bespoke projects.</li>
+          <li>Start in subsurface; extend to AI/IT as needed.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      © ExpertBench — Built for experts. Built for teams.
+    </footer>
+  </div>
 </body>
 </html>
