@@ -3,104 +3,154 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
   <title>ExpertBench — Fast, trusted expert matchmaking for high-impact projects</title>
-
-  <!-- Favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <meta name="description" content="ExpertBench connects companies with vetted consultants fast. Start in Energy & Subsurface, expand into AI and IT.">
   <meta name="color-scheme" content="dark light">
-
   <style>
-    :root{
-      --bg-1:#0b1220;
-      --bg-2:#0c1a33;
-      --card:#0f223f;
-      --muted:#9fb3c8;
-      --text:#e9f0f7;
-      --primary:#0B3D91;
-      --secondary:#3178C6;
-      --accent:#00BFA6;
-      --line:rgba(255,255,255,0.08);
-      --shadow:0 10px 40px rgba(5,15,35,0.5);
-      --radius:16px;
-      --gap:16px;
+    :root {
+      --bg-1: #0b1220;
+      --bg-2: #0c1a33;
+      --card: #0f223f;
+      --muted: #9fb3c8;
+      --text: #e9f0f7;
+      --primary: #0B3D91;
+      --secondary: #3178C6;
+      --accent: #00BFA6;
+      --line: rgba(255, 255, 255, 0.08);
+      --shadow: 0 10px 40px rgba(5, 15, 35, 0.5);
+      --radius: 16px;
+      --gap: 16px;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      color:var(--text); background:
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      background:
         radial-gradient(1200px 600px at 15% -10%, #153260 0%, transparent 55%),
         radial-gradient(900px 500px at 120% 20%, #0e2a55 0%, transparent 60%),
         linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
-      line-height:1.55;
+      line-height: 1.55;
     }
-
-    .container{max-width:1080px;margin:auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
-    .logo{
-      width:44px;height:44px;border-radius:12px;
-      background:linear-gradient(180deg,var(--secondary),var(--primary));
-      display:grid;place-items:center;box-shadow:0 8px 30px rgba(30,100,200,0.35);
+    .container { max-width: 1080px; margin: auto; padding: 24px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
-    .logo svg{width:22px;height:22px}
-    .name{font-weight:800;letter-spacing:.2px;font-size:18px}
-
-    nav a{
-      color:var(--muted); text-decoration:none; margin-left:16px; font-size:14px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
     }
-    nav a:focus-visible{outline:2px solid var(--accent); outline-offset:4px; border-radius:6px; padding:2px 4px}
-
-    .hero{
-      margin-top:24px; display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:stretch;
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, var(--secondary), var(--primary));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 30px rgba(30, 100, 200, 0.35);
     }
-    @media (max-width:900px){ .hero{grid-template-columns:1fr} }
-
-    .card{
-      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025));
-      border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+    .logo svg { width: 22px; height: 22px; }
+    .name { font-weight: 800; letter-spacing: 0.2px; font-size: 18px; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 14px;
     }
-
-    h1{font-size:34px; line-height:1.15; margin:0 0 8px 0}
-    .tag{color:var(--muted); margin:0 0 18px 0}
-
-    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px}
-    .btn{
-      appearance:none; border:none; cursor:pointer; text-decoration:none; font-weight:600;
-      padding:12px 16px; border-radius:12px; transition:transform .08s ease;
-      color:#051225; background:linear-gradient(90deg,var(--secondary),var(--primary));
-      box-shadow:0 8px 26px rgba(30,100,200,0.35);
+    nav a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 6px;
+      padding: 2px 4px;
     }
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(0)}
-    .btn:focus-visible{outline:2px solid var(--accent); outline-offset:4px}
-
-    .btn.alt{
-      background:transparent; color:var(--text);
-      border:1px solid rgba(255,255,255,0.14)
+    .hero {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
     }
-
-    .features{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:8px}
-    @media (max-width:600px){ .features{grid-template-columns:1fr} }
-    .feature{background:rgba(255,255,255,0.05); border:1px solid var(--line); padding:12px; border-radius:12px; color:var(--muted); font-size:14px}
-
-    section{margin-top:20px}
-    h2{margin:0 0 10px 0; font-size:22px}
-    .mini{font-size:14px; color:var(--muted)}
-    .list{display:grid; gap:8px; padding-left:18px}
-    .list li{margin-left:8px}
-
-    footer{margin:28px 0 8px;text-align:center;color:var(--muted);font-size:13px}
-
-    @media (prefers-reduced-motion: reduce){
-      .btn, .btn:hover, .btn:active{transition:none; transform:none}
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px 0; }
+    .tag { color: var(--muted); margin: 0 0 18px 0; }
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 16px;
+      border-radius: 12px;
+      transition: transform 0.08s ease;
+      color: #051225;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      box-shadow: 0 8px 26px rgba(30, 100, 200, 0.35);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+    .btn.alt {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+    .feature {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      padding: 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    section { margin-top: 20px; }
+    h2 { margin: 0 0 10px 0; font-size: 22px; }
+    .mini { font-size: 14px; color: var(--muted); }
+    .list {
+      display: grid;
+      gap: 8px;
+      padding-left: 18px;
+    }
+    .list li { margin-left: 8px; }
+    footer {
+      margin: 28px 0 8px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn, .btn:hover, .btn:active { transition: none; transform: none; }
     }
   </style>
 </head>
@@ -121,6 +171,8 @@
         <a href="#how">How it works</a>
         <a href="#consultants">Consultants</a>
         <a href="#clients">Companies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </header>
 
@@ -128,12 +180,10 @@
       <div class="card">
         <h1>Fast, trusted expert matchmaking.</h1>
         <p class="tag">From Energy &amp; Subsurface to AI and IT — one platform, same quality.</p>
-
         <div class="cta" role="group" aria-label="Primary actions">
           <a class="btn" href="https://forms.gle/ByXwDREL7pXP29k57" target="_blank" rel="noopener">Join as a Consultant</a>
           <a class="btn alt" href="https://forms.gle/rrz8HytBnTUTKdLn9" target="_blank" rel="noopener">Hire an Expert</a>
         </div>
-
         <div class="features" aria-label="Proof points">
           <div class="feature"><strong>Actionable profiles</strong><br>Connect with relevant expertise fast.</div>
           <div class="feature"><strong>Vetted experts</strong><br>Only proven specialists in their fields.</div>
@@ -141,60 +191,9 @@
           <div class="feature"><strong>Zero upfront</strong><br>Only pay when successfully matched.</div>
         </div>
       </div>
-
       <aside class="card" aria-label="Example expert and contact">
-        <div style="font-weight:700;margin-bottom:4px">Jane B</div>
+        <div style="font-weight: 700; margin-bottom: 4px">Jane B</div>
         <div class="mini">Reservoir Engineer · Petrel/Eclipse · CCS site screening</div>
-        <div class="mini" style="margin-top:10px"><strong>Expertise:</strong> 3-day CCS site screen with risks &amp; next steps.</div>
-        <div class="mini" style="margin-top:12px">
-          Questions? Email:
-          <a style="color:#8ecbff" href="mailto:expertbench.team@gmail.com">expertbench.team@gmail.com</a>
-        </div>
-      </aside>
-    </section>
-
-    <section id="how">
-      <div class="card">
-        <h2>How it works</h2>
-        <ol class="mini list">
-          <li>Consultants complete a short sign-up form.</li>
-          <li>Companies submit a brief project outline.</li>
-          <li>We share 3–5 curated matches in 24–72 hours.</li>
-          <li>Book introductions and start quickly.</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="consultants">
-      <div class="card">
-        <h2>For consultants</h2>
-        <ul class="mini list">
-          <li>Get discovered by companies needing your skills.</li>
-          <li>Showcase your deliverables and availability.</li>
-          <li>We manage the introductions so you can focus on work.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="clients">
-      <div class="card">
-        <h2>For companies</h2>
-        <ul class="mini list">
-          <li>Access pre-vetted, relevant experts fast.</li>
-          <li>Choose fixed-scope packages or tailored projects.</li>
-          <li>Cut delays and move from idea to action quickly.</li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      © ExpertBench — Built for experts. Built for teams.
-    </footer>
-
-    <!-- Additional pages exist but are not displayed on the landing page:
-         privacy.html, terms.html, nda.html
-         These can be accessed directly via their URLs in the repository. -->
-  </div>
-</body>
-</html>
-
+        <div class="mini" style="margin-top: 10px"><strong>Expertise:</strong> 3-day CCS site screen with risks &amp; next steps.</div
+::contentReference[oaicite:0]{index=0}
+ 
