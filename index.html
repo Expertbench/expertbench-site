@@ -1,214 +1,145 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ExpertBench — Fast, trusted expert matchmaking for high-impact projects</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <meta name="description" content="ExpertBench connects companies with vetted consultants fast. Start in Energy & Subsurface, expand into AI and IT.">
-  <meta name="color-scheme" content="dark light">
-  <style>
-    :root {
-      --bg-1: #0b1220;
-      --bg-2: #0c1a33;
-      --card: #0f223f;
-      --muted: #9fb3c8;
-      --text: #e9f0f7;
-      --primary: #0B3D91;
-      --secondary: #3178C6;
-      --accent: #00BFA6;
-      --line: rgba(255, 255, 255, 0.08);
-      --shadow: 0 10px 40px rgba(5, 15, 35, 0.5);
-      --radius: 16px;
-      --gap: 16px;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 15% -10%, #153260 0%, transparent 55%),
-        radial-gradient(900px 500px at 120% 20%, #0e2a55 0%, transparent 60%),
-        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
-      line-height: 1.55;
-    }
-    .container { max-width: 1080px; margin: auto; padding: 24px; }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--text);
-    }
-    .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, var(--secondary), var(--primary));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 8px 30px rgba(30, 100, 200, 0.35);
-    }
-    .logo svg { width: 22px; height: 22px; }
-    .name { font-weight: 800; letter-spacing: 0.2px; font-size: 18px; }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 16px;
-      font-size: 14px;
-    }
-    nav a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-      border-radius: 6px;
-      padding: 2px 4px;
-    }
-    .hero {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
-    .card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-    h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px 0; }
-    .tag { color: var(--muted); margin: 0 0 18px 0; }
-    .cta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    .btn {
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 12px 16px;
-      border-radius: 12px;
-      transition: transform 0.08s ease;
-      color: #051225;
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
-      box-shadow: 0 8px 26px rgba(30, 100, 200, 0.35);
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
-    .btn:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
-    .btn.alt {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 8px;
-    }
-    @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
-    .feature {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--line);
-      padding: 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    section { margin-top: 20px; }
-    h2 { margin: 0 0 10px 0; font-size: 22px; }
-    .mini { font-size: 14px; color: var(--muted); }
-    .list {
-      display: grid;
-      gap: 8px;
-      padding-left: 18px;
-    }
-    .list li { margin-left: 8px; }
-    footer {
-      margin: 28px 0 8px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    footer a { color: var(--muted); text-decoration: underline; margin: 0 6px; }
-    @media (prefers-reduced-motion: reduce) {
-      .btn, .btn:hover, .btn:active { transition: none; transform: none; }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ExpertBench — Fast, trusted expert matchmaking for high-impact projects</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<meta name="description" content="ExpertBench connects companies with vetted consultants fast. Start in Energy & Subsurface, expand into AI and IT.">
+<meta name="color-scheme" content="dark light">
+
+<style>
+:root {
+  --bg-1: #0b1220; --bg-2: #0c1a33; --card: #0f223f; --muted: #9fb3c8; 
+  --text: #e9f0f7; --primary: #0B3D91; --secondary: #3178C6; --accent: #00BFA6; 
+  --line: rgba(255, 255, 255, 0.08); --shadow: 0 10px 40px rgba(5, 15, 35, 0.5);
+  --radius: 16px; --gap: 16px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; color: var(--text); 
+  background: radial-gradient(1200px 600px at 15% -10%, #153260 0%, transparent 55%), 
+              radial-gradient(900px 500px at 120% 20%, #0e2a55 0%, transparent 60%), 
+              linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  line-height: 1.55;
+}
+.container { max-width: 1080px; margin: auto; padding: 24px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+.logo { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(180deg, var(--secondary), var(--primary)); display: grid; place-items: center; box-shadow: 0 8px 30px rgba(30, 100, 200, 0.35); }
+.logo svg { width: 22px; height: 22px; }
+.name { font-weight: 800; letter-spacing: 0.2px; font-size: 18px; }
+nav a { color: var(--muted); text-decoration: none; margin-left: 16px; font-size: 14px; }
+nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; padding: 2px 4px; }
+.hero { margin-top: 24px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: stretch; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+.card { background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px 0; }
+.tag { color: var(--muted); margin: 0 0 18px 0; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.btn { appearance: none; border: none; cursor: pointer; text-decoration: none; font-weight: 600; padding: 12px 16px; border-radius: 12px; transition: transform 0.08s ease; color: #051225; background: linear-gradient(90deg, var(--secondary), var(--primary)); box-shadow: 0 8px 26px rgba(30, 100, 200, 0.35); }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.btn.alt { background: transparent; color: var(--text); border: 1px solid rgba(255, 255, 255, 0.14); }
+.features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px; }
+@media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+.feature { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line); padding: 12px; border-radius: 12px; color: var(--muted); font-size: 14px; }
+section { margin-top: 20px; }
+h2 { margin: 0 0 10px 0; font-size: 22px; }
+.mini { font-size: 14px; color: var(--muted); }
+.list { display: grid; gap: 8px; padding-left: 18px; }
+.list li { margin-left: 8px; }
+footer { margin: 28px 0 8px; text-align: center; color: var(--muted); font-size: 13px; }
+.modal-bg { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:999; }
+.modal { background: var(--bg-2); padding:24px; border-radius:16px; max-width:600px; width:90%; max-height:80%; overflow:auto; position:relative; }
+.modal .close { position:absolute; top:12px; right:12px; cursor:pointer; font-weight:bold; font-size:18px; }
+@media (prefers-reduced-motion: reduce) { .btn, .btn:hover, .btn:active { transition: none; transform: none; } }
+</style>
+
 </head>
 <body>
-  <div class="container">
-    <header>
-      <a class="brand" href="#" aria-label="ExpertBench home">
-        <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" role="img" aria-label="ExpertBench logo">
-            <rect x="4" y="4" width="8" height="8" rx="2" fill="white" opacity="0.9"/>
-            <rect x="12" y="8" width="8" height="8" rx="2" fill="white" opacity="0.7"/>
-            <rect x="6" y="12" width="8" height="8" rx="2" fill="white" opacity="0.5"/>
-          </svg>
-        </div>
-        <div class="name">ExpertBench</div>
-      </a>
-      <nav>
-        <a href="#how">How it works</a>
-        <a href="#consultants">Consultants</a>
-        <a href="#clients">Companies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
-
-    <section class="hero" aria-label="Intro and quick actions">
-      <div class="card">
-        <h1>Fast, trusted expert matchmaking.</h1>
-        <p class="tag">From Energy &amp; Subsurface to AI and IT — one platform, same quality.</p>
-        <div class="cta" role="group" aria-label="Primary actions">
-          <a class="btn" href="https://forms.gle/ByXwDREL7pXP29k57" target="_blank" rel="noopener">Join as a Consultant</a>
-          <a class="btn alt" href="https://forms.gle/rrz8HytBnTUTKdLn9" target="_blank" rel="noopener">Hire an Expert</a>
-        </div>
-        <div class="features" aria-label="Proof points">
-          <div class="feature"><strong>Actionable profiles</strong><br>Connect with relevant expertise fast.</div>
-          <div class="feature"><strong>Vetted experts</strong><br>Only proven specialists in their fields.</div>
-          <div class="feature"><strong>Clear scope</strong><br>Fixed or custom project options.</div>
-          <div class="feature"><strong>Zero upfront</strong><br>Only pay when successfully matched.</div>
-        </div>
+<div class="container">
+  <header>
+    <a class="brand" href="#" aria-label="ExpertBench home">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" role="img" aria-label="ExpertBench logo">
+          <rect x="4" y="4" width="8" height="8" rx="2" fill="white" opacity="0.9"/>
+          <rect x="12" y="8" width="8" height="8" rx="2" fill="white" opacity="0.7"/>
+          <rect x="6" y="12" width="8" height="8" rx="2" fill="white" opacity="0.5"/>
+        </svg>
       </div>
-      <aside class="card" aria-label="Example expert and contact">
-        <div style="font-weight: 700; margin-bottom: 4px">Jane B</div>
-        <div class="mini">Reservoir Engineer · Petrel/Eclipse · CCS site screening</div>
-        <div class="mini" style="margin-top: 10px"><strong>Expertise:</strong> 3-day CCS site screen with risks &amp; next steps.</div>
-      </aside>
-    </section>
+      <div class="name">ExpertBench</div>
+    </a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#consultants">Consultants</a>
+      <a href="#clients">Companies</a>
+      <!-- Footer modal triggers -->
+      <a href="#" onclick="openModal('ndaModal'); return false;">NDA</a>
+      <a href="#" onclick="openModal('termsModal'); return false;">Terms</a>
+      <a href="#" onclick="openModal('privacyModal'); return false;">Privacy</a>
+    </nav>
+  </header>
 
-    <!-- Footer with links to Policy, Terms, NDA -->
-    <footer>
-      © ExpertBench — Built for experts. Built for teams.
-      <br>
-      <small>
-        <a href="policy.html">Policy</a> |
-        <a href="terms.html">Terms</a> |
-        <a href="nda.html">NDA</a>
-      </small>
-    </footer>
+  <section class="hero" aria-label="Intro and quick actions">
+    <div class="card">
+      <h1>Fast, trusted expert matchmaking.</h1>
+      <p class="tag">From Energy & Subsurface to AI and IT — one platform, same quality.</p>
+      <div class="cta" role="group" aria-label="Primary actions">
+        <a class="btn" href="https://forms.gle/ByXwDREL7pXP29k57" target="_blank" rel="noopener">Join as a Consultant</a>
+        <a class="btn alt" href="https://forms.gle/rrz8HytBnTUTKdLn9" target="_blank" rel="noopener">Hire an Expert</a>
+      </div>
+      <div class="features" aria-label="Proof points">
+        <div class="feature"><strong>Actionable profiles</strong><br>Connect with relevant expertise fast.</div>
+        <div class="feature"><strong>Vetted experts</strong><br>Only proven specialists in their fields.</div>
+        <div class="feature"><strong>Clear scope</strong><br>Fixed or custom project options.</div>
+        <div class="feature"><strong>Zero upfront</strong><br>Only pay when successfully matched.</div>
+      </div>
+    </div>
+
+    <aside class="card" aria-label="Example expert and contact">
+      <div style="font-weight: 700; margin-bottom: 4px">Jane B</div>
+      <div class="mini">Reservoir Engineer · Petrel/Eclipse · CCS site screening</div>
+      <div class="mini" style="margin-top: 10px"><strong>Expertise:</strong> 3-day CCS site screen with risks & next steps.</div>
+    </aside>
+  </section>
+
+  <footer>
+    &copy; 2025 ExpertBench. All rights reserved.
+  </footer>
+</div>
+
+<!-- Modals -->
+<div id="ndaModal" class="modal-bg">
+  <div class="modal">
+    <span class="close" onclick="closeModal('ndaModal')">&times;</span>
+    <iframe src="nda.html" style="width:100%;height:400px;border:none;"></iframe>
   </div>
+</div>
+<div id="termsModal" class="modal-bg">
+  <div class="modal">
+    <span class="close" onclick="closeModal('termsModal')">&times;</span>
+    <iframe src="terms.html" style="width:100%;height:400px;border:none;"></iframe>
+  </div>
+</div>
+<div id="privacyModal" class="modal-bg">
+  <div class="modal">
+    <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+    <iframe src="privacy.html" style="width:100%;height:400px;border:none;"></iframe>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+
 </body>
 </html>
+
