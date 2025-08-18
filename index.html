@@ -59,7 +59,7 @@
     nav a:focus-visible{outline:2px solid var(--accent); outline-offset:4px; border-radius:6px; padding:2px 4px}
 
     .hero{
-      margin-top:24px; display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:stretch;
+      margin-top:24px; display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:start;
     }
     @media (max-width:900px){ .hero{grid-template-columns:1fr} }
 
@@ -69,7 +69,7 @@
     }
 
     h1{font-size:34px; line-height:1.15; margin:0 0 8px 0}
-    h2{margin:0 0 10px 0; font-size:22px; font-weight:600}
+    h2{margin:0 0 12px 0; font-size:22px; text-align:center}
     .tag{color:var(--muted); margin:0 0 18px 0}
 
     .cta{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px}
@@ -123,7 +123,6 @@
         <a href="#how">How it works</a>
         <a href="#consultants">Consultants</a>
         <a href="#clients">Companies</a>
-        <a href="#projects">Projects</a>
       </nav>
     </header>
 
@@ -145,67 +144,12 @@
         </div>
       </div>
 
-      <aside class="card" aria-label="Example expert and contact">
-        <div style="font-weight:700;margin-bottom:4px">Jane B</div>
-        <div class="mini">Reservoir Engineer · Petrel/Eclipse · CCS site screening</div>
-        <div class="mini" style="margin-top:10px"><strong>Expertise:</strong> 3-day CCS site screen with risks &amp; next steps.</div>
-        <div class="mini" style="margin-top:12px">
-          Questions? Email:
-          <a style="color:#8ecbff" href="mailto:expertbench.team@gmail.com">expertbench.team@gmail.com</a>
-        </div>
-      </aside>
-    </section>
+      <div>
+        <aside class="card" aria-label="Example expert profile">
+          <h2>Expert Profile</h2>
+          <div style="font-weight:700;margin-bottom:4px;text-align:center">Jane B</div>
+          <div class="mini" style="text-align:center">Reservoir Engineer · Petrel/Eclipse · CCS site screening</div>
+          <div class="mini" style="margin-top:10px;text-align:center"><strong>Expertise:</strong> 3-day CCS site screen with risks &amp; next steps.</div>
+        </aside>
 
-    <section id="how">
-      <div class="card">
-        <h2>How it works</h2>
-        <ol class="mini list">
-          <li>Consultants complete a short sign-up form.</li>
-          <li>Companies submit a brief project outline.</li>
-          <li>We share 3–5 curated matches in 24–72 hours.</li>
-          <li>Book introductions and start quickly.</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="consultants">
-      <div class="card">
-        <h2>For consultants</h2>
-        <ul class="mini list">
-          <li>Get discovered by companies needing your skills.</li>
-          <li>Showcase your deliverables and availability.</li>
-          <li>We manage the introductions so you can focus on work.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="clients">
-      <div class="card">
-        <h2>For companies</h2>
-        <ul class="mini list">
-          <li>Access pre-vetted, relevant experts fast.</li>
-          <li>Choose fixed-scope packages or tailored projects.</li>
-          <li>Cut delays and move from idea to action quickly.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="card">
-        <h2>Example projects</h2>
-        <ul class="mini list">
-          <li><strong>Subsurface Data Analysis</strong> — Advanced geological data review for energy exploration projects.</li>
-          <li><strong>Operational Efficiency Review</strong> — Optimizing processes to reduce costs and improve performance.</li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      © ExpertBench — Built for experts. Built for teams.<br>
-      <a href="nda.html">NDA</a> ·
-      <a href="terms.html">Terms</a> ·
-      <a href="privacy.html">Privacy</a>
-    </footer>
-  </div>
-</body>
-</html>
+        <aside class="card" aria-
