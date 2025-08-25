@@ -5,26 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ExpertBench — Our Experts</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg-1:#0b1220;
-      --bg-2:#0c1a33;
-      --card:#0f223f;
-      --muted:#9fb3c8;
-      --text:#e9f0f7;
-      --primary:#0B3D91;
-      --secondary:#3178C6;
-      --accent:#00BFA6;
-      --line:rgba(255,255,255,0.08);
-      --shadow:0 10px 40px rgba(5,15,35,0.5);
-      --radius:16px;
-      --gap:16px;
+      --bg-1:#0b1220; --bg-2:#0c1a33; --card:#0f223f;
+      --muted:#9fb3c8; --text:#e9f0f7; --primary:#0B3D91;
+      --secondary:#3178C6; --accent:#00BFA6; --line:rgba(255,255,255,0.08);
+      --shadow:0 10px 40px rgba(5,15,35,0.5); --radius:16px; --gap:16px;
     }
     *{box-sizing:border-box}
     body{
@@ -54,17 +43,15 @@
       gap:20px;margin-top:20px
     }
 
-    /* Modern expert cards (keeps your palette + vibe) */
+    /* Modern expert cards */
     .card{
       position:relative;
       background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025));
       border:1px solid var(--line); border-radius:var(--radius);
-      padding:20px; box-shadow:var(--shadow);
-      overflow:hidden;
+      padding:20px; box-shadow:var(--shadow); overflow:hidden;
     }
     .card::before{
-      content:"";
-      position:absolute; inset:-1px;
+      content:""; position:absolute; inset:-1px;
       background:radial-gradient(600px 200px at 120% -20%, rgba(49,120,198,0.20), transparent 70%),
                  radial-gradient(400px 160px at -20% 120%, rgba(0,191,166,0.16), transparent 70%);
       pointer-events:none;
@@ -143,14 +130,16 @@
   </div>
 
   <script>
-    // 1) Your Google Apps Script Web App URL (JSON feed)
+    // Your Google Apps Script Web App URL (JSON feed)
     const API_URL = "https://script.google.com/macros/s/AKfycbwY2Ik4TOvD7oRqxwmix0eZdgAV34LWspRxZ-lhibgfJ1dfyZrzd5tUcC1kCIYgy5psdQ/exec";
 
-    // 2) Optional: paste your Company Project Brief Google Form URL below
-    // If left blank, the "Request Intro" button will be hidden.
-    const CLIENT_FORM_URL = "YOUR_CLIENT_FORM_URL";
+    // Paste the *pre-filled* link you generated in Step 2
+    // Use the one that contains REPLACE_NAME and REPLACE_LINK
+    // Example:
+    // const INTRO_FORM_PREFILL = "https://docs.google.com/forms/d/e/XYZ/viewform?entry.111=REPLACE_NAME&entry.222=REPLACE_LINK";
+    const INTRO_FORM_PREFILL = "https://docs.google.com/forms/d/e/1FAIpQLSexGkCF8kDWifQ0v6fZ3VK92h__VlVNR9DLlGrzVJhWotwHYQ/viewform?usp=pp_url&entry.1657328653=REPLACE_NAME&entry.1657327046=REPLACE_LINK";
 
-    // Map your exact column headers (from your sheet)
+    // Exact column headers from your Experts sheet
     const COL = {
       name: "Full Name",
       location: "Current Location",
@@ -168,13 +157,20 @@
       return items.slice(0, max).map(s=>`<span class="pill">${truncate(s,28)}</span>`).join("");
     }
 
+    function buildIntroUrl(name, linkedin){
+      if(!INTRO_FORM_PREFILL || INTRO_FORM_PREFILL === "PASTE_YOUR_PREFILLED_LINK_HERE") return "";
+      return INTRO_FORM_PREFILL
+        .replace("REPLACE_NAME", encodeURIComponent(name || ""))
+        .replace("REPLACE_LINK", encodeURIComponent(linkedin || ""));
+    }
+
     function cardHTML(row){
       const name = safe(row[COL.name]);
       const loc  = safe(row[COL.location]);
 
-      // Years of Experience: show exactly as provided (e.g., "8-12 years" or "13+")
+      // Show whatever is in the sheet, e.g. "8–12 years" or "13+"
       let yoeRaw = safe(row[COL.yoe]);
-      if (yoeRaw && !/\byear/i.test(yoeRaw)) yoeRaw = yoeRaw + " years"; // add "years" if missing
+      if (yoeRaw && !/\byear/i.test(yoeRaw)) yoeRaw = yoeRaw + " years";
       const yoeText = yoeRaw ? `${yoeRaw} experience` : "Experienced Consultant";
 
       const exp  = truncate(row[COL.expertise], 220);
@@ -182,8 +178,9 @@
       const li   = safe(row[COL.linkedin]);
       const travel = safe(row[COL.travel]);
 
-      const introBtn = CLIENT_FORM_URL
-        ? `<a class="btn secondary" target="_blank" rel="noopener" href="${CLIENT_FORM_URL}">Request Intro</a>`
+      const introUrl = buildIntroUrl(name, li);
+      const introBtn = introUrl
+        ? `<a class="btn secondary" target="_blank" rel="noopener" href="${introUrl}">Request Intro</a>`
         : "";
 
       return `
@@ -237,4 +234,5 @@
   </script>
 </body>
 </html>
+
 
