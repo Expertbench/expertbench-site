@@ -163,21 +163,25 @@
 
     function safe(v){ return (v===undefined || v===null) ? "" : String(v).trim(); }
     function truncate(v, n){ v=safe(v); return v.length>n ? v.slice(0, n-1)+"…" : v; }
-    function toPills(listStr, max=4){
-      const items = safe(listStr).split(/,|·|\n/).map(s=>s.trim()).filter(Boolean);
+    function toPills(listStr, max=5){
+      const items = safe(listStr).split(/,|·|\n|;/).map(s=>s.trim()).filter(Boolean);
       return items.slice(0, max).map(s=>`<span class="pill">${truncate(s,28)}</span>`).join("");
     }
 
     function cardHTML(row){
       const name = safe(row[COL.name]);
       const loc  = safe(row[COL.location]);
-      const yoe  = safe(row[COL.yoe]).replace(/[^0-9–+]/g,""); // keep "0–3", "13+" styles
+
+      // Years of Experience: show exactly as provided (e.g., "8-12 years" or "13+")
+      let yoeRaw = safe(row[COL.yoe]);
+      if (yoeRaw && !/\byear/i.test(yoeRaw)) yoeRaw = yoeRaw + " years"; // add "years" if missing
+      const yoeText = yoeRaw ? `${yoeRaw} experience` : "Experienced Consultant";
+
       const exp  = truncate(row[COL.expertise], 220);
       const sec  = row[COL.sectors];
       const li   = safe(row[COL.linkedin]);
       const travel = safe(row[COL.travel]);
 
-      // Hide Request Intro if no CLIENT_FORM_URL provided
       const introBtn = CLIENT_FORM_URL
         ? `<a class="btn secondary" target="_blank" rel="noopener" href="${CLIENT_FORM_URL}">Request Intro</a>`
         : "";
@@ -187,7 +191,7 @@
           <div class="row">
             <div>
               <h2>${name}</h2>
-              <div class="role">${yoe ? yoe + " yrs experience" : "Experienced Consultant"}</div>
+              <div class="role">${yoeText}</div>
             </div>
             <div class="muted">${loc || ""}</div>
           </div>
@@ -233,3 +237,4 @@
   </script>
 </body>
 </html>
+
